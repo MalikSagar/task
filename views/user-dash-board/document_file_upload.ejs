@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>Malik</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="../css/user-dash.css">
+    <link rel="stylesheet" href="../css/animation.css">
+
+    
+<style>
+    .top-up
+{
+  
+  color:#fff;
+  font-size: 15px;
+  padding: 10px;
+  margin: 0px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #fff;
+
+  background-color:#3a3f48;
+}
+.top-up:hover
+{
+  
+  color:#9a3fda;
+  
+  padding: 10px;
+  margin: 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #9a3fda;
+  text-decoration: none;
+}
+
+.main-section{
+	margin:0 auto;
+	padding: 20px;
+	margin-top: 100px;
+	background-color: #fff;
+	box-shadow: 0px 0px 20px #c1c1c1;
+}
+.file-upload{
+    background-color: #9a3fda;
+
+}
+.fileinput-remove,
+.fileinput-upload{
+	display: none;
+}
+.dropdown-menu a
+{
+  color: #fff;
+}
+   
+
+   #dropbox{
+	 border: 2px dashed #9a3fda;
+	 border-radius: 2px;
+	 width: 600px;
+	 height: 200px;
+	 margin: 10px 0px;
+	 text-align: center;
+	 padding-top: 40px;
+	 font-weight: bold;
+	 color: #6E6E6E;	
+	 letter-spacing: 1px;
+	}
+   .active{
+     background : #231230;
+     color:#fff;
+	 font-size: 15px;
+	 
+   }
+   .progress-holder{
+	 width: 300px;
+	 padding: 2px;
+	 background: #CCCCCC;
+	 border-radius: 3px;
+	 float: left;
+	 margin-top: 4px;
+	 margin-right: 5px;
+   }
+   #progress{
+	 height: 6px;
+	 display:block;
+	 width: 0%;
+	 border-radius: 2px;
+	 background: -moz-linear-gradient(center top , #9a3fda 20%,#9a3fda 80%) repeat scroll 0 0 transparent; /* IE hack */ 
+	 background: -ms-linear-gradient(bottom, #9a3fda, #9a3fda); /* chrome hack */ 
+	 background-image: -webkit-gradient(linear, 20% 20%, 20% 100%, from(#9a3fda), to(#9a3fda)); /* safari hack */ 
+	 background-image: -webkit-linear-gradient(top, #9a3fda, #9a3fda); /* opera hack */ 
+	 background-image: -o-linear-gradient(#9a3fda,#9a3fda);
+	 
+   }
+   .preview{
+	
+	 width: 450px;
+	 padding: 10px;
+	 height:auto; 
+	 overflow: auto;
+	 color: #4D4D4D;
+	 float: left;
+	
+	 border-radius: 2px;
+   }
+   .percents{
+	 float: right;
+   }
+   .preview-image{
+
+	 width: 70px;
+	 height: 70px;
+	 float: left;
+	 margin-right: 10px;
+   }
+   .file-info{
+	 height: 50px;
+	 float: left;
+	 width: auto;
+	 margin-bottom: 10px;
+	 border: 1px solid blue;
+   }
+   .file-info span{
+	 margin: 3px 2px;
+	 font-size: 12px;
+	 float:left;
+	 display: block;
+	 min-width: 100px;
+	 overflow: auto;
+	 border: 1px solid red;
+	 overflow: none;
+   }
+   .upload-progress{
+	 display: none;
+   }
+   input[type=file] {
+
+    border:dashed thin #9a3fda;
+    outline: none;   
+    cursor: pointer
+    
+}
+input[type=file]:focus {
+
+    outline: none !important;
+    border:1px solid #9a3fda;
+    box-shadow: 0 0 10px #9a3fda;
+
+}
+</style>
+
+</head>
+
+<body oncontextmenu="return false;">
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+ 
+  <!-- sidebar-wrapper  -->
+<section id="over-view" class="pb-0 mt-4">
+  <main class="text-black pb-0 mt-4 col-9 m-auto">
+      <div class="container-fluid mb-0">
+        
+        <div class="modal-content mb-0 ">
+            <div class="modal-header" style="background-color: #3A3F48;">
+              <h5 class="modal-title text-white" >Malik</h5>
+              <a href="document"  class="fa fa-times" style="font-size: 16px;color: #fff;"></a>
+            </div>
+            <div class="modal-body pb-0" style="border: solid 5px #3A3F48; ; background-color: #f3f7fc">
+                <div class="mt-2 ml-auto  col-lg-12 col-sm-12 col-11 main-section" >
+                    
+                    <h3 class="text-center" style="color:#3A3F48;;">Document File Upload panel</h3><br>
+                    <div id="response">
+                       
+                    </div>
+                    <div class="col-lg-11 col-sm-11 m-auto">
+                        
+                    <form id="file_form" action="/document_upload" enctype="multipart/form-data">
+	               
+	                <div class="col-lg-12 col-sm-12 m-auto" id="dropbox">Drag and Drop Files Here</div>
+                  <div class="mt-2"></div>
+                    <div class="col-lg-7 col-sm-7 form-group text-center m-auto" >
+                    <input  type="file" id="userfile" name="userfile" class="form-control col-lg-10 col-sm-10 mt-2 m-auto text-dark" required value="Choose Video" aria-label="File browser example"  onchange="handleFiles(this.files)"> 
+                </div>
+                    <div class="upload-progress" id="bar"></div>
+                    <div class="alert alert-danger" id="error" style="display: none;">sorry you have no enough space to upload this file</div>
+                    <div class="alert alert-danger" id="incre" style="display: none;">sorry you have only limit to upload 1000 Mb file</div>
+                    <div class="alert alert-danger" id="type" style="display: none;">sorry you have only allow to upload document file</div>
+                    <div class="alert alert-danger" id="size" style="display: none;">sorry you have only limit to upload 10 Mb file</div>
+
+                </form>
+                </div>
+                </div>
+      
+       
+
+<!---file upload-->
+<div class=" fade text-dark col-12">
+    <div class="modal-dialog"  >
+      
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+  </main>
+</section>
+
+
+
+<!---content-->
+
+
+
+
+
+
+
+
+      </div>
+          
+        </div>
+      </footer>
+    </div>
+  </main>
+</section>
+  <!-- page-content" -->
+</div>
+<!-- page-wrapper -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+   
+    <script src="../js/jquery-1.7.1.min.js"></script>
+  <script>
+      $(document).ready(function(){	
+	var dropbox;  
+	  
+	dropbox = document.getElementById("dropbox");  
+	dropbox.addEventListener("dragenter", dragenter, false);  
+	dropbox.addEventListener("dragleave", dragleave, false);  
+	dropbox.addEventListener("dragover", dragover, false);  
+	dropbox.addEventListener("drop", drop, false);  
+	
+	function defaults(e){
+       e.stopPropagation();  
+       e.preventDefault();  
+	}
+    function dragenter(e) {  
+	   $(this).addClass("active");
+	   defaults(e);
+	}  
+      
+    function dragover(e) { 
+	   defaults(e);
+    }  
+    function dragleave(e) {  
+	   $(this).removeClass("active");
+	   defaults(e);
+    }  
+
+    function drop(e) {  
+	   $(this).removeClass("active");
+	   defaults(e);
+      
+	   // dataTransfer -> which holds information about the user interaction, including what files (if any) the user dropped on the element to which the event is bound.
+	   //console.log(e);
+       var dt = e.dataTransfer;  
+       var files = dt.files;  
+      
+       handleFiles(files,e);  
+    }  
+   
+	handleFiles = function (files,e){
+		// alert(files);
+		// Traverse throught all files and check if uploaded file type is image	
+        var imageType = 'application/*';
+        var imageType2 = 'text/*';
+
+        
+         
+		var file = files[0];
+		// check file type
+        $("#type").hide()
+        $("#size").hide()
+        if (!file.type.match(imageType) && !file.type.match(imageType2)) {  
+         // alert(file.type);
+          $("#type").show()
+          return false;	
+		} 
+		// check file size
+    
+		if (parseInt(file.size /1024/1024) > 10) {  
+		  
+          $("#size").show();
+          return false;	
+		} 
+		
+		var info = '<div class="preview active-win col-lg-12 col-sm-12" style="color: #9a3fda"><div class="progress-holder"><span id="progress"></span></div><span class="percents"></span><div style="float:left;">Uploaded <span class="up-done"></span> KB of '+parseInt(file.size / 1024)+' KB</div>';
+		
+		$(".upload-progress").show("fast",function(){
+			$(".upload-progress").html(info); 
+			uploadFile(file);
+		});
+		
+  }
+
+  uploadFile = function(file){
+	// check if browser supports file reader object 
+	if (typeof FileReader !== "undefined"){
+	//alert("uploading "+file.name);  
+	reader = new FileReader();
+	reader.onload = function(e){
+		//alert(e.target.result);
+		$('.preview img').attr('src',e.target.result).css("width","70px").css("height","70px");
+	}
+    reader.readAsDataURL(file);
+    
+    var form = document.getElementById('file_form');
+
+    var formData = new FormData(form);
+    formData.append('userfile', file);
+	xhr = new XMLHttpRequest()
+	xhr.open("post", form.getAttribute('action'), true);
+
+	xhr.upload.addEventListener("progress", function (event) {
+		console.log(event);
+		if (event.lengthComputable) {
+			$("#progress").css("width",(event.loaded / event.total) * 100 + "%");
+			$(".percents").html(" "+((event.loaded / event.total) * 100).toFixed() + "%");
+			$(".up-done").html((parseInt(event.loaded / 1024)).toFixed(0));
+		}
+		else {
+			alert("Failed to compute file upload length");
+		}
+	}, false);
+
+	xhr.onreadystatechange = function (oEvent) {  
+	  if (xhr.readyState === 4) {  
+		if (xhr.status === 200) {  
+            $("#error").hide()
+            $("#incre").hide()
+            $("#progress").css("width","100%");
+            $(".percents").html("100%");
+            $(".up-done").html((parseInt(file.size / 1024)).toFixed(0));
+            
+            if(xhr.response=='"error"')
+            {
+               
+                $("#bar").hide()
+                $("#error").show()
+            }
+            else if(xhr.response=='"incre"')
+            {
+                $("#bar").hide()
+                $("#incre").show()
+            }
+
+		} else {  
+		  alert("Error"+ xhr.statusText);  
+		}  
+	  }  
+	};  
+  
+    // Set headers
+   
+
+    // Send the file (doh)
+   
+    
+	xhr.send(formData);
+
+	}else{
+		alert("Your browser doesnt support FileReader object");
+	} 		
+  }
+});
+  </script>
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+    <script>
+    
+	jQuery(function ($) {
+
+    $(".sidebar-dropdown > a").click(function() {
+  $(".sidebar-submenu").slideUp(200);
+  if (
+    $(this)
+      .parent()
+      .hasClass("active")
+  ) {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .parent()
+      .removeClass("active");
+  } else {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .next(".sidebar-submenu")
+      .slideDown(200);
+    $(this)
+      .parent()
+      .addClass("active");
+  }
+});
+
+$("#close-sidebar").click(function() {
+  $(".page-wrapper").removeClass("toggled");
+});
+$("#show-sidebar").click(function() {
+  $(".page-wrapper").addClass("toggled");
+});
+
+
+   
+   
+});
+    </script>
+    
+    
+</body>
+
+</html>
